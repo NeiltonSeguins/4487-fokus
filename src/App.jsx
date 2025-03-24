@@ -2,7 +2,7 @@ import styles from "./App.module.css";
 
 import Cabecalho from "./components/Cabecalho";
 import Cronometro from "./components/Cronometro";
-import ListaDeTarefas from "./components/ListaDeTarefas";
+import AppTarefas from "./components/AppTarefas";
 import Rodape from "./components/Rodape";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <Cabecalho />
       <main>
         <Cronometro />
-        <ListaDeTarefas />
+        <AppTarefas />
       </main>
       <Rodape />
     </div>

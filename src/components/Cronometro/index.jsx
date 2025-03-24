@@ -9,11 +9,8 @@ export default function Cronometro() {
   return (
     <div className={styles["cronometer"]}>
       <BotoesModos />
-
       <Timer />
-
       <SwitchMusica />
-
       <BotaoCronometro />
     </div>
   );
