@@ -23,15 +23,41 @@ const AppTarefas = () => {
     setExibirFormulario(false);
   }
 
+  // Função para deletar uma tarefa
+  function deletarTarefa(id) {
+    setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+  }
+
+  // Função para deletar todas as tarefas
+  function deletarTodasTarefas() {
+    setTarefas([]);
+  }
+
+  function deletarTarefasConcluidas() {
+    setTarefas(tarefas.filter((tarefa) => !tarefa.concluida));
+  }
+
+  // Função para marcar uma tarefa como concluída
+  function marcarComoConcluida(id) {
+    setTarefas(
+      tarefas.map((tarefa) =>
+        tarefa.id === id ? { ...tarefa, concluida: !tarefa.concluida } : tarefa,
+      ),
+    );
+  }
+
   return (
     <section className={styles["tasks"]}>
       <div className={styles["tasks__task-content"]}>
-        <section className={styles["tasks__active-task"]}>
-          <p className={styles["tasks__active-task-label"]}>#Em andamento:</p>
-          <p className={styles["tasks__active-task-description"]}></p>
-        </section>
-        <CabecalhoTarefas />
-        <ListaTarefas tarefas={tarefas} />
+        <CabecalhoTarefas
+          deletarTodasTarefas={deletarTodasTarefas}
+          deletarTarefasConcluidas={deletarTarefasConcluidas}
+        />
+        <ListaTarefas
+          tarefas={tarefas}
+          deletarTarefa={deletarTarefa}
+          marcarComoConcluida={marcarComoConcluida}
+        />
         {exibirFormulario && (
           <FormularioTarefas
             estaVisivel={exibirFormulario}

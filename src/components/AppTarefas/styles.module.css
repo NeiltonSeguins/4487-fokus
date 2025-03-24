@@ -11,24 +11,6 @@
   color: #fff;
 }
 
-.tasks__active-task {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6rem;
-  padding: 4rem 0;
-  border-bottom: 1px solid #144480;
-  margin-bottom: 4rem;
-}
-
-.tasks__active-task-label {
-  font-family: Montserrat;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-}
-
 .tasks__active-task-description {
   font-family: Montserrat;
   font-size: 1.8rem;
@@ -147,10 +129,6 @@
   cursor: inherit;
 }
 
-.tasks__task-list-item-active.tasks__task-list-item {
-  border: 2px solid #fff;
-}
-
 .tasks__task-list-item-complete .tasks__task-icon-status circle {
   fill: #00f4bf;
 }
@@ -238,6 +216,34 @@
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
+}
+
+.check-task__button {
+  cursor: pointer;
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.check-task__button--complete {
+  background: #00f4bf;
+}
+
+.delete-task__button {
+  cursor: pointer;
+  background-color: #1b293b;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 .app_button-edit:disabled {
