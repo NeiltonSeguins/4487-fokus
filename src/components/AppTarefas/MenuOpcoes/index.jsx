@@ -3,8 +3,12 @@ import moreImg from "/src/assets/imgs/more.svg";
 import checkImg from "/src/assets/imgs/check.svg";
 import trashImg from "/src/assets/imgs/trash.svg";
 import Botao from "../Botao";
+import { useContext } from "react";
+import { TarefasContext } from "../../../context/TarefasContext";
 
-const MenuOpcoes = ({ deletarTodasTarefas, deletarTarefasConcluidas }) => {
+const MenuOpcoes = () => {
+  const { dispatch } = useContext(TarefasContext);
+
   return (
     <div className={styles["dropdown"]}>
       <Botao icone={moreImg} className={styles["dropdown__button-more"]} />
@@ -15,7 +19,7 @@ const MenuOpcoes = ({ deletarTodasTarefas, deletarTarefasConcluidas }) => {
             icone={checkImg}
             className={styles["dropdown__button"]}
             id="btn-remover-concluidas"
-            onClick={deletarTarefasConcluidas}
+            onClick={() => dispatch({ tipo: "DELETAR_CONCLUIDAS" })}
           >
             Limpar tarefas concluídas
           </Botao>
@@ -25,7 +29,7 @@ const MenuOpcoes = ({ deletarTodasTarefas, deletarTarefasConcluidas }) => {
             icone={trashImg}
             className={styles["dropdown__button"]}
             id="btn-remover-concluidas"
-            onClick={deletarTodasTarefas}
+            onClick={() => dispatch({ tipo: "DELETAR_TODAS" })}
           >
             Limpar todas as tarefas
           </Botao>
