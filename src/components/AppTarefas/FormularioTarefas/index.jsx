@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CampoTexto from "../CampoTexto";
 import RodapeTarefas from "../RodapeTarefas";
 import styles from "../styles.module.css";
+import { TarefasContext } from "../../../context/TarefasContext";
 
-const FormularioTarefas = ({ estaVisivel, aoSalvar, aoCancelar }) => {
+const FormularioTarefas = () => {
+  const { exibirFormulario, adicionarTarefa, aoExibirFormulario } = useContext(TarefasContext);
   const [texto, setTexto] = useState("");
 
   return (
     <form
-      className={`${styles["form-add-task"]} ${!estaVisivel ? styles["form-add-task--hidden"] : ""}`}
-      aria-hidden={!estaVisivel}
+      className={`${styles["form-add-task"]} ${!exibirFormulario ? styles["form-add-task--hidden"] : ""}`}
+      aria-hidden={!exibirFormulario}
     >
       <CampoTexto
         value={texto}
@@ -17,7 +19,10 @@ const FormularioTarefas = ({ estaVisivel, aoSalvar, aoCancelar }) => {
         etiqueta="Adicionando tarefa"
         placeholder="No que você está trabalhando?"
       />
-      <RodapeTarefas aoSalvar={() => aoSalvar(texto)} aoCancelar={aoCancelar} />
+      <RodapeTarefas
+        aoSalvar={() => adicionarTarefa(texto)}
+        aoCancelar={() => aoExibirFormulario(false)}
+      />
     </form>
   );
 };

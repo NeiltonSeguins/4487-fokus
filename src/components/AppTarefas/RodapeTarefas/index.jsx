@@ -11,6 +11,7 @@ const RodapeTarefas = ({ aoSalvar, aoCancelar }) => {
         icone={deleteImg}
         type="button"
         className={`${styles["form-add-task__footer-button"]} ${styles["form-add-task__footer-button--delete"]}`}
+        onClick={aoCancelar}
       >
         Deletar
       </Botao>
