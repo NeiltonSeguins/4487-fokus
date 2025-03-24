@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+/* eslint-disable react/display-name */
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import styles from "./styles.module.css";
 import musicaSom from "/src/assets/sons/luna-rise-part-one.mp3";
 
-export default function SwitchMusica() {
+const SwitchMusica = forwardRef((props, ref) => {
   const musicaRef = useRef(null);
 
   useEffect(() => {
@@ -13,6 +14,19 @@ export default function SwitchMusica() {
       musicaRef.current = null;
     };
   }, []);
+
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      if (musicaRef.current) {
+        musicaRef.current.play();
+      }
+    },
+    pause: () => {
+      if (musicaRef.current) {
+        musicaRef.current.pause();
+      }
+    },
+  }));
 
   function alternarMusica() {
     if (!musicaRef.current) return;
@@ -30,6 +44,7 @@ export default function SwitchMusica() {
         onChange={alternarMusica}
         className={styles["toggle__checkbox"]}
         type="checkbox"
+        checked={!musicaRef.current?.paused}
         id="alternar-musica"
       />
       <div className={styles["toggle__switch"]}></div>
@@ -38,4 +53,6 @@ export default function SwitchMusica() {
       </span>
     </label>
   );
-}
+});
+
+export default SwitchMusica;
