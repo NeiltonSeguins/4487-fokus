@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-export default function BotaoModo({ children, modoBotao }) {
+export default function BotaoModo({ children }) {
   return (
     <button
       className={`
